@@ -14,6 +14,7 @@ pipeline {
             steps {
                 git(url: 'https://github.com/kathywan/geoclient.git', branch: 'dev')
                 script {
+                  sh 'echo "GEOSUPPORT_HOME=$GEOSUPPORT_HOME"'
                   sh "./gradlew clean build"
                 }
             }
