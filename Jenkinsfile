@@ -18,6 +18,7 @@ pipeline {
                   sh 'echo "GEOSUPPORT_HOME=$GEOSUPPORT_HOME"'
                   sh 'echo "PATH=$PATH"'
                   sh 'echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"'
+                  sh '. initenv'
                   sh "./gradlew clean build"
                 }
             }
