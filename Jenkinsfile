@@ -4,7 +4,7 @@ pipeline {
     environment {
         EMAIL_RECIPIENTS = 'jenkins@test.com'
         GEOSUPPORT_HOME = '/opt/geosupport'
-        GEOFILES = "/opt/geosupport/fls/'
+        GEOFILES = '/opt/geosupport/fls/'
         GS_LIBRARY_PATH = '/opt/geosupport/lib'
         PATH = "${env.PATH + ':/opt/geosupport/bin'}"
     }
