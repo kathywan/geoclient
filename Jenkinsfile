@@ -15,7 +15,7 @@ pipeline {
 
         stage('Build with unit testing') {
             steps {
-                git(url: '${env.GITHUB_URL}', branch: '${env.GITHUB_BRANCH}')
+                git(url: ${env.GITHUB_URL}, branch: ${env.GITHUB_BRANCH})
                 script {
                   sh 'echo "GEOSUPPORT_HOME=$GEOSUPPORT_HOME"'
                   sh 'echo "PATH=$PATH"'
