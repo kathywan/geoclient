@@ -1,6 +1,5 @@
 pipeline {
-    // run on jenkins nodes tha has java 8 label
-    // agent { label 'java8' }
+    agent any
     // global env variables
     environment {
         EMAIL_RECIPIENTS = 'jenkins@test.com'
@@ -14,7 +13,7 @@ pipeline {
                   sh "./gradlew clean build"
                 }
             }
-        } 
+        }
 
         stage('Development deploy approval and deployment') {
             steps {
