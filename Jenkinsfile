@@ -17,13 +17,14 @@ pipeline {
 
         stage('Build with unit testing') {
             steps {
-                git(url: "${env.GIT_URL}", branch: "dev")
+                git(url: "https://github.com/kathywan/geoclient.git", branch: "dev")
                 script {
                   sh 'echo "GEOSUPPORT_HOME=$GEOSUPPORT_HOME"'
                   sh 'echo "PATH=$PATH"'
                   sh 'echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"'
+                  sh 'echo "GS_INCLUDE_PATH=$GS_INCLUDE_PATH"'
                   //sh '. initenv'
-                  sh "./gradlew clean build -x test"
+                  sh "./gradlew clean assamble"
                 }
             }
         }
