@@ -8,14 +8,16 @@ pipeline {
         GS_LIBRARY_PATH = '/opt/geosupport/lib'
         PATH = "${env.PATH + ':/opt/geosupport/bin'}"
         LD_LIBRARY_PATH = "${env.GS_LIBRARY_PATH}"
-        GITHUB_URL = 'https://github.com/kathywan/geoclient.git'
-        GITHUB_BRANCH = 'dev'
+        GS_INCLUDE_PATH="${env.WORKSPACE + '/geoclient-native/src/geosupport/headers'}"
+
+        //GITHUB_URL = 'https://github.com/kathywan/geoclient.git'
+        //GITHUB_BRANCH = 'dev'
     }
     stages {
 
         stage('Build with unit testing') {
             steps {
-                git(url: "${env.GITHUB_URL}", branch: "${env.GITHUB_BRANCH}")
+                git(url: "${env.GIT_URL}", branch: "dev")
                 script {
                   sh 'echo "GEOSUPPORT_HOME=$GEOSUPPORT_HOME"'
                   sh 'echo "PATH=$PATH"'
