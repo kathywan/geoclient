@@ -14,51 +14,8 @@ pipeline {
                   sh "./gradlew clean build"
                 }
             }
-        }
-        /*stage('Integration tests') {
-            // Run integration test
-            steps {
-                script {
-                    def mvnHome = tool 'Maven 3.3.9'
-                    if (isUnix()) {
-                        // just to trigger the integration test without unit testing
-                        sh "'${mvnHome}/bin/mvn'  verify -Dunit-tests.skip=true"
-                    } else {
-                        bat(/"${mvnHome}\bin\mvn" verify -Dunit-tests.skip=true/)
-                    }
+        } 
 
-                }
-                // cucumber reports collection
-                cucumber buildStatus: null, fileIncludePattern: '**/cucumber.json', jsonReportDirectory: 'target', sortingMethod: 'ALPHABETICAL'
-            }
-        }
-        stage('Sonar scan execution') {
-            // Run the sonar scan
-            steps {
-                script {
-                    def mvnHome = tool 'Maven 3.3.9'
-                    withSonarQubeEnv {
-
-                        sh "'${mvnHome}/bin/mvn'  verify sonar:sonar -Dintegration-tests.skip=true -Dmaven.test.failure.ignore=true"
-                    }
-                }
-            }
-        }
-        // waiting for sonar results based into the configured web hook in Sonar server which push the status back to jenkins
-        stage('Sonar scan result check') {
-            steps {
-                timeout(time: 2, unit: 'MINUTES') {
-                    retry(3) {
-                        script {
-                            def qg = waitForQualityGate()
-                            if (qg.status != 'OK') {
-                                error "Pipeline aborted due to quality gate failure: ${qg.status}"
-                            }
-                        }
-                    }
-                }
-            }
-        }*/
         stage('Development deploy approval and deployment') {
             steps {
                 script {
