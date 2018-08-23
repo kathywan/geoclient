@@ -1,5 +1,7 @@
 pipeline {
-    agent any
+    agent {
+        docker { image 'mlipper/geosupport-docker' }
+    }
     // global env variables
     environment {
         EMAIL_RECIPIENTS = 'jenkins@test.com'
