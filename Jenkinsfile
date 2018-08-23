@@ -7,7 +7,7 @@ pipeline {
         GEOFILES = '/opt/geosupport/fls/'
         GS_LIBRARY_PATH = '/opt/geosupport/lib'
         PATH = "${env.PATH + ':/opt/geosupport/bin'}"
-        LD_LIBRARY_PATH = "${env.LD_LIBRARY_PATH + ":" + env.GS_LIBRARY_PATH}"
+        LD_LIBRARY_PATH = "${env.GS_LIBRARY_PATH}"
     }
     stages {
 
