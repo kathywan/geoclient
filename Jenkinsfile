@@ -7,6 +7,7 @@ pipeline {
         GEOFILES = '/opt/geosupport/fls/'
         GS_LIBRARY_PATH = '/opt/geosupport/lib'
         PATH = "${env.PATH + ':/opt/geosupport/bin'}"
+        LD_LIBRARY_PATH = "${env.LD_LIBRARY_PATH + ":" + env.GS_LIBRARY_PATH}"
     }
     stages {
 
@@ -15,6 +16,8 @@ pipeline {
                 git(url: 'https://github.com/kathywan/geoclient.git', branch: 'dev')
                 script {
                   sh 'echo "GEOSUPPORT_HOME=$GEOSUPPORT_HOME"'
+                  sh 'echo "PATH=$PATH"'
+                  sh 'echo "LD_LIBRARY_PATH=$LD_LIBRARY_PATH"'
                   sh "./gradlew clean build"
                 }
             }
