@@ -3,6 +3,10 @@ pipeline {
     // global env variables
     environment {
         EMAIL_RECIPIENTS = 'jenkins@test.com'
+        GEOSUPPORT_HOME=/opt/geosupport
+        GEOFILES=$GEOSUPPORT_HOME/fls/
+        GS_LIBRARY_PATH=$GEOSUPPORT_HOME/lib
+        PATH=$PATH:$GEOSUPPORT_HOME/bin
     }
     stages {
 
